@@ -1,0 +1,18 @@
+{
+  "name": "newsparser",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "fast-xml-parser": "^4.3.2",
+    "node-html-parser": "^6.1.10",
+    "telegra.ph": "^1.0.1",
+    "translatte": "^3.0.1"
+  },
+  "type": "module"
+}
