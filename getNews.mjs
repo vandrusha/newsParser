@@ -46,7 +46,7 @@ async function getNews(urls) {
             .rawAttributes
             .src
         const pictureLink = `https:${pictureSrc}`;
-        data.push({title, shortDescription, description, pictureLink});
+        data.push({title, shortDescription, description, pictureLink, originalUrl: url});
     }
     return data;
 }

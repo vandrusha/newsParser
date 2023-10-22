@@ -21,6 +21,7 @@ async function translator(data) {
     }).catch(err => {
       alert(err);
     });
+    //console.log(description)
     translatedText.push({ ...article, title, description, shortDescription});
   }
   return translatedText;

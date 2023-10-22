@@ -12,9 +12,10 @@ async function main() {
     const channel = 'https://www.krakow.pl/feeds/rss/komunikaty/26';
     const urls = await getUrls(channel);
     const news = await getNews(urls);
-    const tranlatedNews = await translator(news);
-    for (const article of tranlatedNews) {
-      sendMessage(article);
+    const translatedNews = await translator(news);
+    //console.log(translatedNews);
+    for (const article of translatedNews) {
+      await sendMessage(article);
     }
     await timer(60000);
     //alert('minute passed');

@@ -1,7 +1,7 @@
 import creds from './creds.mjs';
 
 const alert = (message) => {
-  fetch(`https://api.telegram.org/bot${creds().tg_bot_token}/sendmessage`, {
+  fetch(`https://api.telegram.org/bot${creds().tg_test_bot_token}/sendmessage`, {
     method: 'POST',
     body: JSON.stringify({
       'chat_id': '-731887520',
