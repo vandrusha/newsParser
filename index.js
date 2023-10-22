@@ -17,7 +17,7 @@ async function main() {
     for (const article of translatedNews) {
       await sendMessage(article);
     }
-    await timer(60000);
+    await timer(600000);
     //alert('minute passed');
   }  
 }
