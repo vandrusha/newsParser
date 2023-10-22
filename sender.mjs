@@ -15,49 +15,49 @@ async function sendMessage(message) {
     .then(res => res.url)
     .catch(err => alert(err))
 
-  // await fetch(`https://api.telegram.org/bot${creds().tg_bot_token}/sendmessage`, {
-  //   method: 'POST',
-  //   body: JSON.stringify({
-  //     'chat_id': '-1002057549117',
-  //     'parse_mode': 'Markdown',
-  //     'text': `${message.shortDescription} [img](${message.pictureLink})\n [Арыгiнал](${message.originalUrl}) \n\n [Чытаць далей па-беларуску](${url})`
-  //   }),
-  //   headers: {
-  //     'Content-type':
-  //       'application/json;charset=UTF-8'
-  //   }
-  // })
-  await fetch(`https://api.telegram.org/bot${creds().tg_test_bot_token}/sendmessage`, {
+  await fetch(`https://api.telegram.org/bot${creds().tg_bot_token}/sendmessage`, {
     method: 'POST',
     body: JSON.stringify({
-      'chat_id': '-731887520',
+      'chat_id': '-1002057549117',
       'parse_mode': 'Markdown',
-      'text': `${message.shortDescription} [img](${message.pictureLink})\n [Арыгiнал](${message.originalUrl}) \n\n [Чытаць далей](${url})`
+      'text': `${message.shortDescription} [img](${message.pictureLink})\n [Арыгiнал](${message.originalUrl}) \n\n [Чытаць далей па-беларуску](${url})`
     }),
     headers: {
       'Content-type':
         'application/json;charset=UTF-8'
     }
   })
-    .then(function (rssResponse) {
-      switch (rssResponse.status) {
-        // status "OK"
-        case 200:
-          return rssResponse.text();
-        // status "Not Found"
-        case 404:
-          alert(rssResponse)
-          throw rssResponse;
-      }
-    })
-    .then(function (template) {
-      return template;
-    })
-    .catch(function (rssResponse) {
-      // "Not Found"
-      alert(rssResponse.statusText)
-      console.log(rssResponse.statusText);
-    });
+  // await fetch(`https://api.telegram.org/bot${creds().tg_test_bot_token}/sendmessage`, {
+  //   method: 'POST',
+  //   body: JSON.stringify({
+  //     'chat_id': '-731887520',
+  //     'parse_mode': 'Markdown',
+  //     'text': `${message.shortDescription} [img](${message.pictureLink})\n [Арыгiнал](${message.originalUrl}) \n\n [Чытаць далей](${url})`
+  //   }),
+  //   headers: {
+  //     'Content-type':
+  //       'application/json;charset=UTF-8'
+  //   }
+  // })
+  //   .then(function (rssResponse) {
+  //     switch (rssResponse.status) {
+  //       // status "OK"
+  //       case 200:
+  //         return rssResponse.text();
+  //       // status "Not Found"
+  //       case 404:
+  //         alert(rssResponse)
+  //         throw rssResponse;
+  //     }
+  //   })
+  //   .then(function (template) {
+  //     return template;
+  //   })
+  //   .catch(function (rssResponse) {
+  //     // "Not Found"
+  //     alert(rssResponse.statusText)
+  //     console.log(rssResponse.statusText);
+  //   });
 }
 // sendMessage({title: 'asd', description: 'asd', pictureLink: 'https://', originalUrl: 'https://', url: 'https://'});
 
