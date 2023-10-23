@@ -3,9 +3,11 @@ import alert from './alert.mjs';
 import linksValidator from './linksValidator.mjs';
 import {valid} from 'node-html-parser';
 
-async function getUrls(rssChannel) {
+async function getUrls(rssChannels) {
+  const sourceLinks = [];
+  for (const channel of rssChannels) {
   //const channel = 'https://www.krakow.pl/feeds/rss/komunikaty/26';
-  const rssResponse = await fetch(rssChannel)
+  const rssResponse = await fetch(channel)
     .then(function (rssResponse) {
       switch (rssResponse.status) {
         // status "OK"
@@ -28,18 +30,30 @@ async function getUrls(rssChannel) {
   const rssXml = await rssResponse;
   const xmlParse = new XMLParser();
   const rssParsed = xmlParse.parse(rssXml);
-  const links = rssParsed.rss.channel.item.reduce((acc, item) => {
-    const now = new Date();
+  const links = [];
+  const item = rssParsed.rss.channel.item;
+  const now = new Date();
+  if (Array.isArray(item)) {
+  links.push(...item.reduce((acc, item) => {
     const pubDate = new Date(item.pubDate);
     const diffInMins = (now - pubDate) / 60000;
-    if (diffInMins < 15) {
+    if (diffInMins < 1200) {
       acc.push(item.link);
     }
     return acc;
-  }, []);
+  }, []));
+} else {
+  const pubDate = new Date(item.pubDate);
+  const diffInMins = (now - pubDate) / 60000;
+  if (diffInMins < 15) {
+    links.push(item.link);
+  }
+}
   //console.log(links)
   const validLinks = await linksValidator(links);
-  return validLinks;
+  sourceLinks.push(...validLinks);
+}
+return sourceLinks;
 }
 
 export default getUrls;
