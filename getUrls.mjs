@@ -37,7 +37,7 @@ async function getUrls(rssChannels) {
   links.push(...item.reduce((acc, item) => {
     const pubDate = new Date(item.pubDate);
     const diffInMins = (now - pubDate) / 60000;
-    if (diffInMins < 1200) {
+    if (diffInMins < 15) {
       acc.push(item.link);
     }
     return acc;

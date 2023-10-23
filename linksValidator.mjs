@@ -16,7 +16,7 @@ async function linksValidator(links) {
   .readFileSync(path.resolve(__dirname, fileName), 'utf8')
   const postedLinks = JSON.parse(postedLinksFile).items;
   const validLinks = links.filter(link => !postedLinks.includes(link));
-  const linksArray = [...validLinks, ...postedLinks].slice(0, 50);
+  const linksArray = [...validLinks, ...postedLinks].slice(0, 100);
   //console.log(linksArray);
   const linksToPreserve = JSON.stringify({items: linksArray});
   fs.writeFile(path.resolve(__dirname, fileName), linksToPreserve, (err) => {

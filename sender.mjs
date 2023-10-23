@@ -8,7 +8,7 @@ const client = new Telegraph(accessToken);
 
 async function sendMessage(message) {
   const title = message.title;
-  const description = `[{"tag":"p","children":["${formatter(message.description)} \n\n Арыгiнал: ${message.originalUrl}"]}]`;
+  const description = `[{"tag":"p","children":["${formatter(message.description)} \n\n Крынiца: ${message.originalUrl}"]}]`;
   //console.log(description);
 
   const url = await client.createPage(title, description, 'Навiны Кракава')
@@ -20,7 +20,7 @@ async function sendMessage(message) {
     body: JSON.stringify({
       'chat_id': '-1002057549117',
       'parse_mode': 'Markdown',
-      'text': `${message.shortDescription} [img](${message.pictureLink})\n [Арыгiнал](${message.originalUrl}) \n\n [Чытаць далей па-беларуску](${url})`
+      'text': `${message.shortDescription} [img](${message.pictureLink})\n [Крынiца](${message.originalUrl}) \n\n [Чытаць далей па-беларуску](${url})`
     }),
     headers: {
       'Content-type':
