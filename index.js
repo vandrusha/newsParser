@@ -21,4 +21,4 @@ async function main() {
     //alert('minute passed');
   }  
 }
-main();
+await main();

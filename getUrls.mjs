@@ -1,5 +1,7 @@
 import {XMLParser} from 'fast-xml-parser';
 import alert from './alert.mjs';
+import linksValidator from './linksValidator.mjs';
+import {valid} from 'node-html-parser';
 
 async function getUrls(rssChannel) {
   //const channel = 'https://www.krakow.pl/feeds/rss/komunikaty/26';
@@ -30,13 +32,14 @@ async function getUrls(rssChannel) {
     const now = new Date();
     const pubDate = new Date(item.pubDate);
     const diffInMins = (now - pubDate) / 60000;
-    if (diffInMins < 10) {
+    if (diffInMins < 15) {
       acc.push(item.link);
     }
     return acc;
   }, []);
   //console.log(links)
-  return links;
+  const validLinks = await linksValidator(links);
+  return validLinks;
 }
-//getUrls();
+
 export default getUrls;
