@@ -15,7 +15,18 @@ async function sendMessage(message) {
     .then(res => res.url)
     .catch(err => alert(err))
 
-  g
+  await fetch(`https://api.telegram.org/bot${creds().tg_bot_token}/sendmessage`, {
+    method: 'POST',
+    body: JSON.stringify({
+      'chat_id': '-1002057549117',
+      'parse_mode': 'Markdown',
+      'text': `${message.shortDescription} [img](${message.pictureLink})\n [Арыгiнал](${message.originalUrl}) \n\n [Чытаць далей па-беларуску](${url})`
+    }),
+    headers: {
+      'Content-type':
+        'application/json;charset=UTF-8'
+    }
+  })
   // await fetch(`https://api.telegram.org/bot${creds().tg_test_bot_token}/sendmessage`, {
   //   method: 'POST',
   //   body: JSON.stringify({
