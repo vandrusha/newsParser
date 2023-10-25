@@ -14,7 +14,6 @@ const channels = [
   'https://www.krakow.pl/feeds/rss/komunikaty/1912',
   'https://www.krakow.pl/feeds/rss/komunikaty/30',
   'https://www.krakow.pl/feeds/rss/komunikaty/31',
-  'https://www.krakow.pl/feeds/rss/komunikaty/33',
   'https://www.krakow.pl/feeds/rss/komunikaty/32',
   'https://www.krakow.pl/feeds/rss/komunikaty/2163',
   'https://www.krakow.pl/feeds/rss/komunikaty/100'
