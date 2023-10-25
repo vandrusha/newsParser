@@ -26,25 +26,27 @@ async function getNews(urls) {
             });
         const news = await response;
         const dom = parse(news);
-        const title = dom
+        let title = dom
             .getElementsByTagName("div")
             .find(div => div.attributes.class === 'article-title')
             .querySelector("h1")
             .innerText
-        const shortDescription = dom
+        let shortDescription = dom
             .getElementsByTagName("div")
             .find(div => div.attributes.class === 'article__description_lead')
             .innerText;
-        const description = dom
+        let description = dom
             .getElementsByTagName("div")
             .find(div => div.attributes.class === 'article__description')
             .innerText;
-        const pictureSrc = dom
+        let pictureSrc = dom
             .getElementsByTagName("figure")
             .find(div => div.attributes.class === 'article__figure')
             .querySelector("img")
             .rawAttributes
             .src
+        title = title ? title : 'Без назвы';
+        shortDescription = shortDescription ? shortDescription : title;
         const pictureLink = `https:${pictureSrc}`;
         data.push({title, shortDescription, description, pictureLink, originalUrl: url});
     }
