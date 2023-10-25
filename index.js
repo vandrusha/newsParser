@@ -16,7 +16,8 @@ const channels = [
   'https://www.krakow.pl/feeds/rss/komunikaty/31',
   'https://www.krakow.pl/feeds/rss/komunikaty/32',
   'https://www.krakow.pl/feeds/rss/komunikaty/2163',
-  'https://www.krakow.pl/feeds/rss/komunikaty/100'
+  'https://www.krakow.pl/feeds/rss/komunikaty/100',
+  'https://www.krakow.pl/feeds/rss/komunikaty/2286'
 ];
 
 async function main() {
